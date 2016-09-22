@@ -12,7 +12,7 @@ VERSION = (0, 2, 1)
 setup(
     name="python-lzf",
     description="C Extension for liblzf",
-    version=".".join(filter(None, map(str, VERSION))),
+    version=".".join([_f for _f in map(str, VERSION) if _f]),
     author="Travis Parker",
     author_email="travis.parker@gmail.com",
     url="http://github.com/teepark/python-lzf",
@@ -63,7 +63,7 @@ def clean():
         if p.endswith(".pyc") or p.endswith(".pyo"):
             try:
                 p.remove()
-            except OSError, exc:
+            except OSError as exc:
                 if exc.args[0] == errno.EACCES:
                     continue
                 raise
